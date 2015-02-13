@@ -1,8 +1,8 @@
--- Load data from Batting.csv, assign column names and group runs by year
+-- Load data from Batting.csv, assign field names and group runs by year
 batting = load 'Batting.csv' using PigStorage(',');
 runs = FOREACH batting GENERATE $0 as playerID, $1 as year, $8 as runs;
 group_runs = GROUP runs BY (year);
--- Load data from Salaries.csv, assign column names and group salaries by team
+-- Load data from Salaries.csv, assign field names and group salaries by team
 salaries = load 'Salaries.csv' using PigStorage(',');
 cash_given = FOREACH salaries GENERATE $0 as year, $3 as playerID, $4 as salary;
 group_salaries = GROUP cash_given BY (year);
